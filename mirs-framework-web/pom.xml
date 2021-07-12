@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.mirs.banxiaoxiao.framework.dependencies</groupId>
+        <artifactId>mirs-framework-dependencies</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../mirs-framework-dependencies</relativePath>
+    </parent>
+    <groupId>com.github.mirs.banxiaoxiao.framework.web</groupId>
+    <artifactId>mirs-framework-web</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>mirs-framework-web</name>
+
+    <properties>
+        <project.release.version>0.0.1</project.release.version>
+    </properties>
+    <!-- 打包发布release版本，每个工程必须要维护-->
+    <profiles>
+        <profile>
+            <id>release</id>
+            <properties>
+                <project.release.version>0.0.1</project.release.version>
+            </properties>
+        </profile>
+    </profiles>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.core</groupId>
+            <artifactId>mirs-framework-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+    </dependencies>
+</project>

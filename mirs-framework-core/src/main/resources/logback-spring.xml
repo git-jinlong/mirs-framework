@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <springProperty name="bee.config.appname" source="bee.config.appname"/>
+  <springProperty name="bee.log.basedir" source="bee.log.basedir"/>
+  <springProperty name="bee.log.level" source="bee.log.level"/>
+  <springProperty name="bee.log.maxHistory" source="bee.log.maxHistory"/>
+  <springProperty name="bee.log.error.maxHistory" source="bee.log.error.maxHistory"/>
+  <springProperty name="bee.log.error.totalSizeCap" source="bee.log.error.totalSizeCap"/>
+  <springProperty name="bee.log.error.maxFileSize" source="bee.log.error.maxFileSize"/>
+  <springProperty name="bee.log.totalSizeCap" source="bee.log.totalSizeCap"/>
+  <springProperty name="bee.log.maxFileSize" source="bee.log.maxFileSize"/>
+
+  <appender name="STDOUT_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- Log message format -->
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%logger{0}] %msg%n</pattern>
+    </encoder>
+    <filter class="com.github.mirs.banxiaoxiao.framework.core.log.support.LoggerFilter">
+      <logger>TUBESERVICE</logger>
+      <onMatch>DENY</onMatch>
+      <onMismatch>ACCEPT</onMismatch>
+    </filter>
+  </appender>
+
+  <!-- 默认日志file appender -->
+  <appender name="DEFAULT_APPENDER"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${bee.log.basedir:-logs}/${bee.config.appname:-default}.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${bee.log.basedir:-logs}/${bee.config.appname:-default}.log.%d{yyyy.MM.dd}.%i
+      </fileNamePattern>
+      <maxHistory>${bee.log.maxHistory:-10}</maxHistory>
+      <maxFileSize>${bee.log.maxFileSize:-20mb}</maxFileSize>
+      <totalSizeCap>${bee.log.totalSizeCap:-200mb}</totalSizeCap>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%logger{0}] %msg%n
+      </pattern>
+    </encoder>
+    <filter class="com.github.mirs.banxiaoxiao.framework.core.log.support.LoggerFilter">
+      <logger>TUBESERVICE</logger>
+      <onMatch>DENY</onMatch>
+      <onMismatch>ACCEPT</onMismatch>
+    </filter>
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>DENY</onMatch>
+      <onMismatch>ACCEPT</onMismatch>
+    </filter>
+  </appender>
+
+  <!-- 错误日志file appender -->
+  <appender name="ERROR_APPENDER"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${bee.log.basedir:-logs}/${bee.config.appname:-default}-error.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${bee.log.basedir:-logs}/${bee.config.appname:-default}-error.log.%d{yyyy.MM.dd}.%i
+      </fileNamePattern>
+      <maxHistory>${bee.log.error.maxHistory:-20}</maxHistory>
+      <maxFileSize>${bee.log.error.maxFileSize:-20mb}</maxFileSize>
+      <totalSizeCap>${bee.log.error.totalSizeCap:-400mb}</totalSizeCap>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%logger{0}] %msg%n
+      </pattern>
+    </encoder>
+    <!-- 只打印错误日志 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+  </appender>
+
+  <!-- 服务调用的日志 -->
+  <appender name="SERVICE_APPENDER"
+    class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${bee.log.basedir:-logs}/${bee.config.appname:-default}-service.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${bee.log.basedir:-logs}/${bee.config.appname:-default}-service.log.%d{yyyy.MM.dd}.%i
+      </fileNamePattern>
+      <maxHistory>${bee.log.maxHistory:-10}</maxHistory>
+      <maxFileSize>${bee.log.maxFileSize:-20mb}</maxFileSize>
+      <totalSizeCap>${bee.log.totalSizeCap:-200mb}</totalSizeCap>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|%msg%n</pattern>
+    </encoder>
+    <!-- 排除错误日志 -->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>DENY</onMatch>
+      <onMismatch>ACCEPT</onMismatch>
+    </filter>
+  </appender>
+  <!-- 开发环境 -->
+  <springProfile name="dev,default">
+    <root level="${bee.log.level:-INFO}">
+      <appender-ref ref="DEFAULT_APPENDER" />
+      <appender-ref ref="ERROR_APPENDER" />
+      <appender-ref ref="STDOUT_APPENDER"/>
+    </root>
+  </springProfile>
+  
+  <!-- 正式环境 输出warn及以上日志 -->
+  <springProfile name="prod">
+    <root level="${bee.log.level:-INFO}">
+      <appender-ref ref="DEFAULT_APPENDER"/>
+      <appender-ref ref="ERROR_APPENDER"/>
+    </root>
+  </springProfile>
+
+
+  <logger name="TUBESERVICE" level="${bee.log.level.tubeservice:-INFO}">
+    <appender-ref ref="SERVICE_APPENDER"/>
+  </logger>
+
+  <!-- 配置一些第三方包的日志过滤级别 -->
+  <logger name="org.hibernate" level="WARN"/>
+  <logger name="org.springframework" level="WARN"/>
+  <logger name="com.opensymphony" level="WARN"/>
+  <logger name="org.apache" level="WARN"/>
+  <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="WARN"/>
+  <logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="WARN"/>
+  <logger name="org.hibernate.SQL" level="INFO"/>
+  <logger name="org.hibernate.engine.QueryParameters" level="INFO"/>
+  <logger name="org.hibernate.engine.query.HQLQueryPlan" level="INFO"/>
+  <logger name="org.eclipse.jetty" level="WARN"/>
+  <logger name="org.jboss.netty" level="INFO"/>
+  <logger name="com.alibaba.dubbo" level="ERROR"/>
+  <logger name="org.apache.ibatis" level="ERROR"/>
+  <logger name="org.mybatis" level="ERROR"/>
+
+</configuration>

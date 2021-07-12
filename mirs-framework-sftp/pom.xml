@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.github.mirs.banxiaoxiao.framework.dependencies</groupId>
+        <artifactId>mirs-framework-dependencies</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../mirs-framework-dependencies</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.mirs.banxiaoxiao.framework.sftp</groupId>
+    <artifactId>mirs-framework-sftp</artifactId>
+
+    <name>mirs-framework-sftp</name>
+    <properties>
+        <project.release.version>0.0.1</project.release.version>
+    </properties>
+    <!-- 打包发布release版本，每个工程必须要维护-->
+    <profiles>
+        <profile>
+            <id>release</id>
+            <properties>
+                <project.release.version>0.0.1</project.release.version>
+            </properties>
+        </profile>
+    </profiles>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.core</groupId>
+            <artifactId>mirs-framework-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+            <version>1.2.5.RELEASE</version>
+        </dependency>
+        <!-- sftp -->
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-sftp</artifactId>
+            <!--            <version>5.4.6</version>-->
+        </dependency>
+        <!-- sftp -->
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.6</version>
+        </dependency>
+        <!-- 自定义连接池 start-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <!-- 自定义连接池 end-->
+    </dependencies>
+</project>

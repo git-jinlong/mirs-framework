@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.github.mirs.banxiaoxiao.framework.dependencies</groupId>
+        <artifactId>mirs-framework-dependencies</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../mirs-framework-dependencies</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.mirs.banxiaoxiao.framework.redis</groupId>
+    <artifactId>mirs-framework-redis</artifactId>
+
+    <name>mirs-framework-redis</name>
+
+    <properties>
+        <project.release.version>0.0.1-SNAPSHOT</project.release.version>
+    </properties>
+    <!-- 打包发布release版本，每个工程必须要维护-->
+    <profiles>
+        <profile>
+            <id>release</id>
+            <properties>
+                <project.release.version>0.0.1</project.release.version>
+            </properties>
+        </profile>
+    </profiles>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.core</groupId>
+            <artifactId>mirs-framework-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+        <!-- 引入 redis 分布式锁 -->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>${redission.version}</version>
+        </dependency>
+    </dependencies>
+</project>

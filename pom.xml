@@ -10,6 +10,16 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
 
+        <module>mirs-framework-dependencies</module>
+        <module>mirs-assembly-descriptor</module>
+        <module>mirs-framework-common</module>
+        <module>mirs-framework-core</module>
+        <module>mirs-framework-web</module>
+        <module>mirs-framework-redis</module>
+        <module>mirs-framework-jdbc</module>
+        <module>mirs-framework-swagger</module>
+        <module>mirs-framework-sftp</module>
+        <module>mirs-framework-all</module>
     </modules>
 
     <name>mirs</name>
@@ -24,6 +34,13 @@
 
     </properties>
 
+    <developers>
+        <developer>
+            <name>bc</name>
+            <email>624343219@qq.com</email>
+        </developer>
+    </developers>
+
     <!-- 打包发布release版本，每个工程必须要维护-->
     <profiles>
         <profile>
@@ -33,7 +50,16 @@
             </properties>
         </profile>
     </profiles>
-
+    <distributionManagement>
+        <snapshotRepository>
+            <id>berd-snapshots</id>
+            <url>http://172.17.230.145:8081/artifactory/libs-snapshot</url>
+        </snapshotRepository>
+        <repository>
+            <id>berd-release</id>
+            <url>http://172.17.230.145:8081/artifactory/libs-release</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>

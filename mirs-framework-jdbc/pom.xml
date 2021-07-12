@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.mirs.banxiaoxiao.framework.dependencies</groupId>
+        <artifactId>mirs-framework-dependencies</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../mirs-framework-dependencies</relativePath>
+    </parent>
+    <groupId>com.github.mirs.banxiaoxiao.framework.jdbc</groupId>
+    <artifactId>mirs-framework-jdbc</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>mirs-framework-jdbc</name>
+    <properties>
+        <project.release.version>0.0.1</project.release.version>
+    </properties>
+    <!-- 打包发布release版本，每个工程必须要维护-->
+    <profiles>
+        <profile>
+            <id>release</id>
+            <properties>
+                <project.release.version>0.0.1</project.release.version>
+            </properties>
+        </profile>
+    </profiles>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.core</groupId>
+            <artifactId>mirs-framework-core</artifactId>
+        </dependency>
+
+        <!-- jdbc & mybatis -->
+        <!-- mp 依赖 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-spring</artifactId>
+            <type>pom</type>
+            <version>3.0.0.M4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+        <!-- jdbc & mybatis end -->
+
+    </dependencies>
+</project>

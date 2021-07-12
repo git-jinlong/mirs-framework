@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.mirs.banxiaoxiao.framework.dependencies</groupId>
+        <artifactId>mirs-framework-dependencies</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../mirs-framework-dependencies</relativePath>
+    </parent>
+
+    <groupId>com.github.mirs.banxiaoxiao.framework.all</groupId>
+    <artifactId>mirs-framework-all</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>mirs-framework-all</name>
+
+    <dependencies>
+        <!-- mirs -->
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.web</groupId>
+            <artifactId>mirs-framework-web</artifactId>
+            <version>${mirs.web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.sftp</groupId>
+            <artifactId>mirs-framework-sftp</artifactId>
+            <version>${mirs.sftp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.redis</groupId>
+            <artifactId>mirs-framework-redis</artifactId>
+            <version>${mirs.redis.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.swagger</groupId>
+            <artifactId>mirs-framework-swagger</artifactId>
+            <version>${mirs.swagger.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.jdbc</groupId>
+            <artifactId>mirs-framework-jdbc</artifactId>
+            <version>${mirs.jdbc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.common</groupId>
+            <artifactId>mirs-framework-common</artifactId>
+            <version>${mirs.common.version}</version>
+        </dependency>
+    </dependencies>
+</project>

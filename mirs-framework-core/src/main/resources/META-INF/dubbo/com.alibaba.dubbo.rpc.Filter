@@ -1,0 +1,4 @@
+drpcException=com.github.mirs.banxiaoxiao.framework.core.drpc.DrpcExceptionFilter
+drpcLog=com.github.mirs.banxiaoxiao.framework.core.drpc.filter.DrpcLogFilter
+drpcContext=com.github.mirs.banxiaoxiao.framework.core.drpc.DrpcContextFilter
+drpcCross=com.github.mirs.banxiaoxiao.framework.core.cross.filter.DrpcCrossFilter

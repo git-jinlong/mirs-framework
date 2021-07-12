@@ -1,0 +1,37 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>mirs-framework-package</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <files>
+        <file>
+            <source>${project.build.directory}/${project.artifactId}.sql</source>
+            <outputDirectory>sql/</outputDirectory>
+        </file>
+        <file>
+            <source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+            <outputDirectory></outputDirectory>
+        </file>
+    </files>
+
+    <fileSets>
+        <fileSet>
+            <directory>src/assembly</directory>
+            <includes>
+                <include>*.txt</include>
+            </includes>
+            <outputDirectory></outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>src/assembly/database</directory>
+            <includes>
+                <include>*.sql</include>
+            </includes>
+            <outputDirectory>sql/fragment/</outputDirectory>
+        </fileSet>
+    </fileSets>
+
+</assembly>

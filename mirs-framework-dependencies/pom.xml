@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.mirs.banxiaoxiao.framework.dependencies</groupId>
+    <artifactId>mirs-framework-dependencies</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>mirs-framework-dependencies</name>
+    <url>http://www.banxiaoxiao.com</url>
+    <packaging>pom</packaging>
+    <properties>
+        <project.release.version>0.0.1-SNAPSHOT</project.release.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
+        <!--mirs-->
+        <mirs.maln.api.version>1.0.0</mirs.maln.api.version>
+        <mirs.common.version>0.0.2</mirs.common.version>
+        <mirs.core.version>0.0.1-SNAPSHOT</mirs.core.version>
+        <mirs.rmq.version>10.2.1-SNAPSHOT</mirs.rmq.version>
+        <mirs.dtask.version>0.0.3</mirs.dtask.version>
+        <mirs.file.version>0.0.1</mirs.file.version>
+        <mirs.hbase.version>0.0.1</mirs.hbase.version>
+        <mirs.es.version>0.0.3</mirs.es.version>
+
+        <!--swagger2 -->
+        <swagger.base.version>2.9.2</swagger.base.version>
+        <swagger.ui.version>2.9.2</swagger.ui.version>
+
+        <mirs.sftp.version>0.0.1-SNAPSHOT</mirs.sftp.version>
+        <mirs.redis.version>0.0.1-SNAPSHOT</mirs.redis.version>
+        <mirs.web.version>0.0.1-SNAPSHOT</mirs.web.version>
+        <mirs.swagger.version>0.0.1-SNAPSHOT</mirs.swagger.version>
+        <mirs.jdbc.version>0.0.1-SNAPSHOT</mirs.jdbc.version>
+        <mirs.common.version>0.0.1-SNAPSHOT</mirs.common.version>
+        <mirs.all.version>0.0.1-SNAPSHOT</mirs.all.version>
+
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <spring.cloud.version>Hoxton.SR9</spring.cloud.version>
+        <mapstruct.version>1.1.0.Final</mapstruct.version>
+        <commons-lang3.version>3.6</commons-lang3.version>
+        <commons-io.version>2.7</commons-io.version>
+        <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <mybatis-spring-boot-starter.version>1.3.1</mybatis-spring-boot-starter.version>
+        <mariadb-java-client.version>2.2.0</mariadb-java-client.version>
+        <lombok.version>1.18.16</lombok.version>
+        <rxjava2.version>2.1.6</rxjava2.version>
+        <mybatis-typehandlers-jsr310.version>1.0.2</mybatis-typehandlers-jsr310.version>
+        <netty.version>4.0.27.Final</netty.version>
+
+        <dubbo.version>2.7.1</dubbo.version>
+        <dubbo.metadata-report-zookeeper.version>2.7.1</dubbo.metadata-report-zookeeper.version>
+        <zookeeper.version>3.5.3-beta</zookeeper.version>
+        <javax.websocket-api.version>1.1</javax.websocket-api.version>
+        <com.rabbitmq.version>5.7.3</com.rabbitmq.version>
+        <apache.hadoop.common.version>3.1.1</apache.hadoop.common.version>
+        <apache.hadoop.hdfs.version>3.1.1</apache.hadoop.hdfs.version>
+        <apache.hadoop.client.version>3.1.1</apache.hadoop.client.version>
+        <apache.hbase.client.version>1.4.9</apache.hbase.client.version>
+        <org.jsou.version>1.11.3</org.jsou.version>
+        <poi.version>3.17</poi.version>
+        <csv.version>2.0</csv.version>
+        <shiro.version>1.4.0</shiro.version>
+        <jwt.version>3.4.0</jwt.version>
+        <org.elasticsearch.version>7.6.2</org.elasticsearch.version>
+        <net.java.dev.jna.version>5.2.0</net.java.dev.jna.version>
+        <com.github.oshi.version>3.9.1</com.github.oshi.version>
+        <com.alibaba.fastjson.version>1.2.73</com.alibaba.fastjson.version>
+        <redission.version>3.15.2</redission.version>
+    </properties>
+    <!-- 打包发布release版本，每个工程必须要维护-->
+    <profiles>
+        <profile>
+            <id>release</id>
+            <properties>
+                <project.release.version>0.0.1</project.release.version>
+                <mirs.sftp.version>0.0.1</mirs.sftp.version>
+                <mirs.redis.version>0.0.1</mirs.redis.version>
+                <mirs.web.version>0.0.1</mirs.web.version>
+                <mirs.swagger.version>0.0.1</mirs.swagger.version>
+                <mirs.jdbc.version>0.0.1</mirs.jdbc.version>
+                <mirs.common.version>0.0.1</mirs.common.version>
+                <mirs.all.version>0.0.1</mirs.all.version>
+            </properties>
+        </profile>
+    </profiles>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>berd-snapshots</id>
+            <url>http://172.17.230.145:8081/artifactory/libs-snapshot</url>
+        </snapshotRepository>
+        <repository>
+            <id>berd-release</id>
+            <url>http://172.17.230.145:8081/artifactory/libs-release</url>
+        </repository>
+    </distributionManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.common</groupId>
+                <artifactId>mirs-framework-common</artifactId>
+                <version>${mirs.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.core</groupId>
+                <artifactId>mirs-framework-core</artifactId>
+                <version>${mirs.core.version}</version>
+            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>com.github.mirs.banxiaoxiao.framework.core</groupId>-->
+            <!--                <artifactId>bee-rmq</artifactId>-->
+            <!--                <version>${bee.rmq.version}</version>-->
+            <!--                <exclusions>-->
+            <!--                    <exclusion>-->
+            <!--                        <groupId>com.arcvideo.berd</groupId>-->
+            <!--                        <artifactId>berd-core</artifactId>-->
+            <!--                    </exclusion>-->
+            <!--                    <exclusion>-->
+            <!--                        <groupId>com.arcvideo.berd</groupId>-->
+            <!--                        <artifactId>berd-logger</artifactId>-->
+            <!--                    </exclusion>-->
+            <!--                </exclusions>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.github.mirs.banxiaoxiao.framework.core</groupId>-->
+            <!--                <artifactId>bee-es</artifactId>-->
+            <!--                <version>${bee.es.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            <dependency>-->
+            <!--                <groupId>com.github.mirs.banxiaoxiao.framework.core</groupId>-->
+            <!--                <artifactId>bee-dtask</artifactId>-->
+            <!--                <version>${bee.dtask.version}</version>-->
+            <!--            </dependency>-->
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${com.alibaba.fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.oshi</groupId>
+                <artifactId>oshi-core</artifactId>
+                <version>${com.github.oshi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.java.dev.jna</groupId>
+                <artifactId>jna</artifactId>
+                <version>${net.java.dev.jna.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.java.dev.jna</groupId>
+                <artifactId>jna-platform</artifactId>
+                <version>${net.java.dev.jna.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${org.elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${org.elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-client</artifactId>
+                <version>${org.elasticsearch.version}</version>
+            </dependency>
+            <!--shiro -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <!-- poi -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sourceforge.javacsv</groupId>
+                <artifactId>javacsv</artifactId>
+                <version>${csv.version}</version>
+            </dependency>
+            <!-- 增加jsoup 解析xml -->
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${org.jsou.version}</version>
+            </dependency>
+
+            <!-- hadoop -->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-common</artifactId>
+                <version>${apache.hadoop.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-hdfs</artifactId>
+                <version>${apache.hadoop.hdfs.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-client</artifactId>
+                <version>${apache.hbase.client.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-client</artifactId>
+                <version>${apache.hadoop.client.version}</version>
+            </dependency>
+            <!-- hadoop end -->
+            <dependency>
+                <groupId>com.rabbitmq</groupId>
+                <artifactId>amqp-client</artifactId>
+                <version>${com.rabbitmq.version}</version>
+            </dependency>
+            <!-- spring -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-buffer</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-codec</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-codec-http</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-common</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-handler</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-transport</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-transport-native-epoll</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mariadb.jdbc</groupId>
+                <artifactId>mariadb-java-client</artifactId>
+                <version>${mariadb-java-client.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-typehandlers-jsr310</artifactId>
+                <version>${mybatis-typehandlers-jsr310.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.reactivex.rxjava2</groupId>
+                <artifactId>rxjava</artifactId>
+                <version>${rxjava2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>io.netty</groupId>
+                        <artifactId>netty</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-metadata-report-zookeeper</artifactId>
+                <version>${dubbo.metadata-report-zookeeper.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.oracle</groupId>
+                <artifactId>ojdbc</artifactId>
+                <version>10.2.0.4.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>1.9</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.3.3</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>3.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.base.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.ui.version}</version>
+            </dependency>
+            <!-- mirs -->
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.web</groupId>
+                <artifactId>mirs-framework-web</artifactId>
+                <version>${mirs.web.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.sftp</groupId>
+                <artifactId>mirs-framework-sftp</artifactId>
+                <version>${mirs.sftp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.redis</groupId>
+                <artifactId>mirs-framework-redis</artifactId>
+                <version>${mirs.redis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.swagger</groupId>
+                <artifactId>mirs-framework-swagger</artifactId>
+                <version>${mirs.swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.jdbc</groupId>
+                <artifactId>mirs-framework-jdbc</artifactId>
+                <version>${mirs.jdbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.common</groupId>
+                <artifactId>mirs-framework-common</artifactId>
+                <version>${mirs.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.all</groupId>
+                <artifactId>mirs-framework-all</artifactId>
+                <version>${mirs.all.version}</version>
+            </dependency>
+        </dependencies>
+
+
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+            <version>${lombok.version}</version>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <generateReleasePoms>false</generateReleasePoms>
+                    <arguments>-f -DskipTests</arguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.19.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.google.code.maven-svn-wagon</groupId>
+                        <artifactId>maven-svn-wagon</artifactId>
+                        <version>1.4</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                                <goal>build-info</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <excludeGroupIds>org.projectlombok</excludeGroupIds>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.github.mirs.banxiaoxiao.framework.assembly</groupId>
+                            <artifactId>mirs-assembly-descriptor</artifactId>
+                            <version>0.0.1-SNAPSHOT</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <id>package-assembly</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <finalName>${project.build.finalName}</finalName>
+                        <descriptorRefs>
+                            <descriptorRef>mirs-framework-package</descriptorRef>
+                        </descriptorRefs>
+                        <outputDirectory>dist</outputDirectory>
+                        <appendAssemblyId>false</appendAssemblyId>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>1.8</version>
+                    <executions>
+                        <execution>
+                            <id>concat-sql</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>run</goal>
+                            </goals>
+                            <configuration>
+                                <target>
+                                    <concat encoding="UTF-8" destfile="${project.build.directory}/${project.artifactId}.sql" fixlastline="true">
+                                        <sort>
+                                            <fileset dir="${project.basedir}/src/assembly/database" includes="*.sql"/>
+                                            <name/>
+                                        </sort>
+                                    </concat>
+                                </target>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.0.0</version>
+                    <configuration>
+                        <filesets>
+                            <fileset>
+                                <directory>dist</directory>
+                                <includes>
+                                    <include>**/*</include>
+                                </includes>
+                            </fileset>
+                        </filesets>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
