@@ -20,6 +20,8 @@
         <module>mirs-framework-swagger</module>
         <module>mirs-framework-sftp</module>
         <module>mirs-framework-all</module>
+        <module>mirs-framework-demo</module>
+        <module>mirs-framework-elasticsearch</module>
     </modules>
 
     <name>mirs</name>

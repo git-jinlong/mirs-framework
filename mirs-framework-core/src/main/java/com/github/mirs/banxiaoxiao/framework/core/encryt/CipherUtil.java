@@ -139,25 +139,27 @@ public class CipherUtil {
     private static Boolean isEnable = null;
 
     public static boolean isEnable() {
-        if (isEnable != null) {
-            return isEnable;
-        }
-        String encryptEnable = BeeClientConfiguration.getLocalProperies().getProperty(Constants.CONFIG_ENCRYPT_KEY);
-        if (encryptEnable == null) {
-            ClassPathResource bootstarterClass = new ClassPathResource("com/arcvideo/bee/boot/BeeStarter.class");
-            try {
-                byte[] bootstarterClassBytes = IOUtils.readAllBytes(bootstarterClass.getInputStream());
-                bootstarterClassBytes = CipherUtil.decryptc(bootstarterClassBytes);
-                if (bootstarterClassBytes == null) {
-                    encryptEnable = "false";
-                } else {
-                    encryptEnable = "true";
-                }
-            } catch (IOException e1) {
-                encryptEnable = "true";
-            }
-        }
-        isEnable = StringUtil.equalsIgnoreCase(encryptEnable, "true");
-        return isEnable;
+        //TODO 此功能废弃掉，需要把ClassReader.c 重新编译
+        return false;
+//        if (isEnable != null) {
+//            return isEnable;
+//        }
+//        String encryptEnable = BeeClientConfiguration.getLocalProperies().getProperty(Constants.CONFIG_ENCRYPT_KEY);
+//        if (encryptEnable == null) {
+//            ClassPathResource bootStarterClassResource = new ClassPathResource("com/github/mirs/banxiaoxiao/framework/core/boot/MirsStarter.class");
+//            try {
+//                byte[] bootStarterClassBytes = IOUtils.readAllBytes(bootStarterClassResource.getInputStream());
+//                bootStarterClassBytes = CipherUtil.decryptc(bootStarterClassBytes);
+//                if (bootStarterClassBytes == null) {
+//                    encryptEnable = "false";
+//                } else {
+//                    encryptEnable = "true";
+//                }
+//            } catch (IOException e1) {
+//                encryptEnable = "true";
+//            }
+//        }
+//        isEnable = StringUtil.equalsIgnoreCase(encryptEnable, "true");
+//        return isEnable;
     }
 }
