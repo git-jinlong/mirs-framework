@@ -22,6 +22,8 @@
         <module>mirs-framework-all</module>
         <module>mirs-framework-demo</module>
         <module>mirs-framework-elasticsearch</module>
+        <module>mirs-framework-rabbitmq</module>
+        <module>mirs-framework-dtask</module>
     </modules>
 
     <name>mirs</name>

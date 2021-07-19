@@ -8,14 +8,14 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author zcy 2018年10月12日
  * @param <T>
+ * @author zcy 2018年10月12日
  */
 public class DataTimeWindow<T> {
 
     private TimeUnit unit;
 
-    protected int lenght;
+    protected int length;
 
     protected int checkCursor;
 
@@ -57,7 +57,7 @@ public class DataTimeWindow<T> {
         }
         this.listener = listener;
         this.unit = unit;
-        this.lenght = length;
+        this.length = length;
         this.timer.schedule(new TimerTask() {
 
             public void run() {
@@ -81,7 +81,7 @@ public class DataTimeWindow<T> {
             this.timer.cancel();
             this.timer = null;
         }
-        for (int i = 0; i < this.lenght; i++) {
+        for (int i = 0; i < this.length; i++) {
             WindowBlock<T> windowBlock = this.blocks[i];
             windowBlock.clear();
         }
@@ -106,18 +106,18 @@ public class DataTimeWindow<T> {
         }
         blocks[checkCursor].clear();
         checkCursor++;
-        if (checkCursor >= this.lenght) {
+        if (checkCursor >= this.length) {
             checkCursor = 0;
         }
         dataCursor++;
-        if (dataCursor >= this.lenght) {
+        if (dataCursor >= this.length) {
             dataCursor = 0;
         }
     }
 
     public List<T> gets() {
         List<T> list = new ArrayList<T>();
-        for (int i = 0; i < this.lenght; i++) {
+        for (int i = 0; i < this.length; i++) {
             WindowBlock<T> windowBlock = this.blocks[i];
             list.addAll(windowBlock.data.keySet());
         }
@@ -125,7 +125,7 @@ public class DataTimeWindow<T> {
     }
 
     public void push(T data) {
-        if(!isAlive()) {
+        if (!isAlive()) {
             throw new IllegalStateException("invalid time window");
         }
         if (data == null) {
@@ -144,7 +144,7 @@ public class DataTimeWindow<T> {
         if (data == null) {
             return null;
         }
-        for (int i = 0; i < this.lenght; i++) {
+        for (int i = 0; i < this.length; i++) {
             WindowBlock<T> windowBlock = this.blocks[i];
             T exist = windowBlock.find(data);
             if (exist != null) {
@@ -161,13 +161,13 @@ public class DataTimeWindow<T> {
      * @return
      */
     public T pick(T data) {
-        if(!isAlive()) {
+        if (!isAlive()) {
             throw new IllegalStateException("invalid time window");
         }
         if (data == null) {
             return null;
         }
-        for (int i = 0; i < this.lenght; i++) {
+        for (int i = 0; i < this.length; i++) {
             WindowBlock<T> windowBlock = this.blocks[i];
             T exist = windowBlock.remove(data);
             if (exist != null) {
@@ -181,8 +181,8 @@ public class DataTimeWindow<T> {
         return unit;
     }
 
-    public int getLenght() {
-        return lenght;
+    public int getLength() {
+        return length;
     }
 
     protected static class WindowBlock<T> {
