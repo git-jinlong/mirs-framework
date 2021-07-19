@@ -21,19 +21,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
         <!--mirs-->
-        <mirs.maln.api.version>1.0.0</mirs.maln.api.version>
-        <mirs.common.version>0.0.2</mirs.common.version>
         <mirs.core.version>0.0.1-SNAPSHOT</mirs.core.version>
-        <mirs.rmq.version>10.2.1-SNAPSHOT</mirs.rmq.version>
-        <mirs.dtask.version>0.0.3</mirs.dtask.version>
-        <mirs.file.version>0.0.1</mirs.file.version>
-        <mirs.hbase.version>0.0.1</mirs.hbase.version>
-        <mirs.es.version>0.0.3</mirs.es.version>
-
-        <!--swagger2 -->
-        <swagger.base.version>2.9.2</swagger.base.version>
-        <swagger.ui.version>2.9.2</swagger.ui.version>
-
         <mirs.sftp.version>0.0.1-SNAPSHOT</mirs.sftp.version>
         <mirs.redis.version>0.0.1-SNAPSHOT</mirs.redis.version>
         <mirs.web.version>0.0.1-SNAPSHOT</mirs.web.version>
@@ -41,6 +29,17 @@
         <mirs.jdbc.version>0.0.1-SNAPSHOT</mirs.jdbc.version>
         <mirs.common.version>0.0.1-SNAPSHOT</mirs.common.version>
         <mirs.all.version>0.0.1-SNAPSHOT</mirs.all.version>
+        <mirs.common.version>0.0.1-SNAPSHOT</mirs.common.version>
+        <mirs.rabbitmq.version>0.0.1-SNAPSHOT</mirs.rabbitmq.version>
+        <mirs.elasticsearch.version>0.0.1-SNAPSHOT</mirs.elasticsearch.version>
+        <mirs.core.version>0.0.1-SNAPSHOT</mirs.core.version>
+        <mirs.dtask.version>0.0.1-SNAPSHOT</mirs.dtask.version>
+
+
+        <!--swagger2 -->
+        <swagger.base.version>2.9.2</swagger.base.version>
+        <swagger.ui.version>2.9.2</swagger.ui.version>
+
 
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <spring.cloud.version>Hoxton.SR9</spring.cloud.version>
@@ -81,6 +80,7 @@
             <id>release</id>
             <properties>
                 <project.release.version>0.0.1</project.release.version>
+                <mirs.core.version>0.0.1</mirs.core.version>
                 <mirs.sftp.version>0.0.1</mirs.sftp.version>
                 <mirs.redis.version>0.0.1</mirs.redis.version>
                 <mirs.web.version>0.0.1</mirs.web.version>
@@ -88,6 +88,11 @@
                 <mirs.jdbc.version>0.0.1</mirs.jdbc.version>
                 <mirs.common.version>0.0.1</mirs.common.version>
                 <mirs.all.version>0.0.1</mirs.all.version>
+                <mirs.common.version>0.0.1</mirs.common.version>
+                <mirs.rabbitmq.version>0.0.1</mirs.rabbitmq.version>
+                <mirs.elasticsearch.version>0.0.1</mirs.elasticsearch.version>
+                <mirs.core.version>0.0.1</mirs.core.version>
+                <mirs.dtask.version>0.0.1</mirs.dtask.version>
             </properties>
         </profile>
     </profiles>
@@ -113,32 +118,22 @@
                 <artifactId>mirs-framework-core</artifactId>
                 <version>${mirs.core.version}</version>
             </dependency>
-            <!--            <dependency>-->
-            <!--                <groupId>com.github.mirs.banxiaoxiao.framework.core</groupId>-->
-            <!--                <artifactId>bee-rmq</artifactId>-->
-            <!--                <version>${bee.rmq.version}</version>-->
-            <!--                <exclusions>-->
-            <!--                    <exclusion>-->
-            <!--                        <groupId>com.arcvideo.berd</groupId>-->
-            <!--                        <artifactId>berd-core</artifactId>-->
-            <!--                    </exclusion>-->
-            <!--                    <exclusion>-->
-            <!--                        <groupId>com.arcvideo.berd</groupId>-->
-            <!--                        <artifactId>berd-logger</artifactId>-->
-            <!--                    </exclusion>-->
-            <!--                </exclusions>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>com.github.mirs.banxiaoxiao.framework.core</groupId>-->
-            <!--                <artifactId>bee-es</artifactId>-->
-            <!--                <version>${bee.es.version}</version>-->
-            <!--            </dependency>-->
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.rabbitmq</groupId>
+                <artifactId>mirs-framework-rabbitmq</artifactId>
+                <version>${mirs.rabbitmq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.elasticsearch</groupId>
+                <artifactId>mirs-framework-elasticsearch</artifactId>
+                <version>${mirs.elasticsearch.version}</version>
+            </dependency>
 
-            <!--            <dependency>-->
-            <!--                <groupId>com.github.mirs.banxiaoxiao.framework.core</groupId>-->
-            <!--                <artifactId>bee-dtask</artifactId>-->
-            <!--                <version>${bee.dtask.version}</version>-->
-            <!--            </dependency>-->
+            <dependency>
+                <groupId>com.github.mirs.banxiaoxiao.framework.dtask</groupId>
+                <artifactId>mirs-framework-dtask</artifactId>
+                <version>${mirs.dtask.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>

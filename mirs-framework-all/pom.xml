@@ -50,5 +50,21 @@
             <artifactId>mirs-framework-common</artifactId>
             <version>${mirs.common.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.elasticsearch</groupId>
+            <artifactId>mirs-framework-elasticsearch</artifactId>
+            <version>${mirs.elasticsearch.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.rabbitmq</groupId>
+            <artifactId>mirs-framework-rabbitmq</artifactId>
+            <version>${mirs.rabbitmq.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.mirs.banxiaoxiao.framework.dtask</groupId>
+            <artifactId>mirs-framework-dtask</artifactId>
+            <version>${mirs.dtask.version}</version>
+        </dependency>
     </dependencies>
 </project>
